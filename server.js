@@ -42,7 +42,7 @@ app.use(passport.session());
 
 //passport config
 require('./server/config/passportConfig');
-app.get('/login/twitter',passport.authenticate('twitter'))
+app.get('/login/twitter',passport.authenticate('twitter'));
 app.get('/twitter/callback',
   passport.authenticate('twitter',{failureRedirect:'/login/twitter'}),
   (req,res)=>{
