@@ -53,6 +53,12 @@ app.get('/twitter/callback',
 //launch angular
 app.use(express.static('./dist'));
 
+//special Api
+const specialRoutes = glob.sync('./server/route/special/*.js');
+specialRoutes.forEach((route)=>{
+  app.use('/api',require(route));
+});
+
 //api list
 app.use(require('connect-ensure-login').ensureLoggedIn('/login/twitter'));
 const routes = glob.sync('./server/route/*.js');
