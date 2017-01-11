@@ -9,9 +9,9 @@ passport.use(new Strategy({
 	consumerSecret:'VJgiQsOQvZi7f7jafCcFR8d4dlYrsFxRDRQAZTwGqgtAI7PAtY',
 	callbackURL:'http://127.0.0.1:4444/twitter/callback'
 },(token,tokenSecret,profile,cb)=>{
-  User.find({'twitter.id':profile.id})
-    .exec((user)=>{
-      if(user){
+  User.findOne({'twitter.id':profile.id})
+    .exec((err,user)=>{
+      if(user!==null){
         // console.log(user);
         return cb(null,user);
       } else {

@@ -13,13 +13,13 @@ const goingSchema = new mongoose.Schema({
     required:true
   },
   yelp:{
-    id:String,
-    name:String,
-    url:String,
-    snippet_image_url:String,
-    snippet_text:String,
-    display_address:String,
-    phone:Number
+    id:{type:String,required:true},
+    name:{type:String,required:true},
+    url:{type:String,required:true},
+    snippet_image_url:{type:String,required:true},
+    snippet_text:{type:String,required:true},
+    display_address:{type:String,required:true},
+    phone:{type:Number,required:true}
   }
 });
 
