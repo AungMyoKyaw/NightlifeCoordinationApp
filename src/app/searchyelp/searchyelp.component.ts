@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchyelpService } from '../searchyelp.service';
-import { RecentsearchService } from '../recentsearch.service';
 
 @Component({
   moduleId: 'module.id',
