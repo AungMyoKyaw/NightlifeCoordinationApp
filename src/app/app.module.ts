@@ -17,6 +17,7 @@ const appRoutes:Routes=[
     redirectTo: 'dashboard',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

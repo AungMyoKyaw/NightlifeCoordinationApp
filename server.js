@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const glob = require('glob');
+const path = require('path');
 
 const app = express();
 
@@ -66,17 +67,17 @@ specialRoutes.forEach((route)=>{
   app.use('/api',require(route));
 });
 
-//404 redirect
-app.get('*',(req,res)=>{
-  res.redirect('/');
-})
-
 //api list
 app.use(require('connect-ensure-login').ensureLoggedIn('/login/twitter'));
 const routes = glob.sync('./server/route/*.js');
 routes.forEach((route)=>{//api list
 	app.use('/api',require(route));
 });
+
+// 404 redirect
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'dist/index.html'));
+})
 
 //starting app
 app.listen(port,()=>{

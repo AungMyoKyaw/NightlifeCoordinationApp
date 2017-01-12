@@ -26,7 +26,7 @@ export class SearchyelpService {
 
   yelpSearchResult(location:string){
     console.log(location);
-    return this.http.get(`http://127.0.0.1:4444/api/yelp?location=${location}`)
+    return this.http.get(`/api/yelp?location=${location}`)
                     .map(res=>res.json());
   }
 }
