@@ -1,0 +1,22 @@
+a{
+  text-decoration: none;
+}
+.row{
+  margin-bottom: .3em;
+}
+.loading{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.placestyle{
+  border-bottom: .2em solid;
+}
+/*.col-xs-2{
+  display: inline-block;
+  vertical-align: middle;
+}
+.col-xs-10{
+  display: inline-block;
+  vertical-align: middle;
+}*/
