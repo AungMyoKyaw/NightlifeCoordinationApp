@@ -1,13 +1,21 @@
 <div class="container">
-  <div class="row">
-    <form action="http://127.0.0.1:4444/api/yelp">
-      <div class="form-group">
-        <input type="text" #search (keyup.enter)="onEnter(search.value)" class="form-control" placeholder="Search Here" value="{{sVal}}">
-      </div>
-    </form>
+  <div class="row" *ngIf="!isAuth">
+    <div class="col-xs-12 login">
+      <a href="http://127.0.0.1:4444/login/twitter" type="button" class="btn btn-primary center-block">Login with Twitter</a>
+    </div>
   </div>
   <div class="row">
-    <div *ngIf="loading" class="loading text-info">
+    <div class="col-xs-12">
+      <form action="http://127.0.0.1:4444/api/yelp">
+        <div class="form-group">
+          <input type="text" #search (keyup.enter)="onEnter(search.value)" class="form-control" placeholder="Search Here" value="{{sVal}}">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngIf="loading" class="loading text-info">
       loading .....
     </div>
     <div *ngFor="let place of placeList">
@@ -31,6 +39,7 @@
           </p>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

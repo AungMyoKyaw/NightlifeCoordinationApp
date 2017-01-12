@@ -12,6 +12,7 @@ export class SearchyelpComponent implements OnInit {
   recentSearch: string;
   sVal: string = '';
   loading: boolean = false;
+  isAuth: boolean = false;
 
   constructor(private searchyelpService:SearchyelpService) { }
 
@@ -36,6 +37,11 @@ export class SearchyelpComponent implements OnInit {
 
   ngOnInit() {
     this.recentSearch = this.searchyelpService.getRecentsearch();
+    this.searchyelpService.checkIsAuth()
+                          .subscribe(auth=>{
+                            this.isAuth = auth.isAuth;
+                            console.log(this.isAuth,'is auth');
+                          });
     if(this.recentSearch!==''){
       console.log(this.recentSearch,'searching now');
       this.loading = true;

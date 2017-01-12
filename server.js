@@ -66,17 +66,17 @@ specialRoutes.forEach((route)=>{
   app.use('/api',require(route));
 });
 
+//404 redirect
+app.get('*',(req,res)=>{
+  res.redirect('/');
+})
+
 //api list
 app.use(require('connect-ensure-login').ensureLoggedIn('/login/twitter'));
 const routes = glob.sync('./server/route/*.js');
 routes.forEach((route)=>{//api list
 	app.use('/api',require(route));
 });
-
-//404 redirect
-app.get('*',(req,res)=>{
-	res.redirect('/');
-})
 
 //starting app
 app.listen(port,()=>{

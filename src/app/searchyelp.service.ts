@@ -19,6 +19,11 @@ export class SearchyelpService {
     localStorage.setItem('recentSearch','');
   }
 
+  checkIsAuth(){
+    return this.http.get('http://127.0.0.1:4444/api/isAuth')
+                    .map(res=>res.json());
+  }
+
   yelpSearchResult(location:string){
     console.log(location);
     return this.http.get(`http://127.0.0.1:4444/api/yelp?location=${location}`)

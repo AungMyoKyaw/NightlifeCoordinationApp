@@ -12,11 +12,6 @@ a{
 .placestyle{
   border-bottom: .2em solid;
 }
-/*.col-xs-2{
-  display: inline-block;
-  vertical-align: middle;
+.login{
+  margin-bottom: 1em;
 }
-.col-xs-10{
-  display: inline-block;
-  vertical-align: middle;
-}*/
