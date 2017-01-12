@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngIf="loading" class="loading text-info">
+      loading .....
+    </div>
+    <div *ngFor="let place of goinglist">
+      <div class="row placestyle">
+        <div class="col-sm-2">
+          <img src="{{place.yelp.image_url}}" alt="{{place.yelp.name}}" class="thumbnail center-block">
+          <button type="button" class="btn btn-danger btn-block" (click)="deleteFromGoingList(place._id)">Delete</button>
+        </div>
+        <div class="col-sm-10">
+          <h2><a href="{{place.yelp.url}}" target="_blank">{{place.yelp.name}}</a></h2>
+          <p class="text-info text-justify">{{place.yelp.snippet_text}}</p>
+          <p>{{place.yelp.phone}}</p>
+          <p *ngFor="let addr of place.yelp.display_address">
+            {{addr}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 backtodashboard">
+      <a routerLink="/dashboard" type="button" class="btn btn-primary btn-block">Back to Dashboard</a>
+    </div>
+  </div>
+</div>

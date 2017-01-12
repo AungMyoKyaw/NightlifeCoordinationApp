@@ -8,9 +8,11 @@ import { SearchyelpService } from './searchyelp.service';
 
 import { AppComponent } from './app.component';
 import { SearchyelpComponent } from './searchyelp/searchyelp.component';
+import { MygoinglistComponent } from './mygoinglist/mygoinglist.component';
 
 const appRoutes:Routes=[
   {path:'dashboard',component:SearchyelpComponent},
+  {path:'mygoinglist',component:MygoinglistComponent},
 
   {
     path:'',
@@ -23,7 +25,8 @@ const appRoutes:Routes=[
 @NgModule({
   declarations: [
     AppComponent,
-    SearchyelpComponent
+    SearchyelpComponent,
+    MygoinglistComponent
   ],
   imports: [
     BrowserModule,

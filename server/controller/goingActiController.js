@@ -22,21 +22,16 @@ function addToGoingList(req,res){
 }
 
 function removeFromGoingList(req,res){
-  let yelpId = req.params.yelpID;
+  let actiId = req.params.actiId;
   let userId = req.user._id;
 
-  let timeToQuery = new Date();
-  timeToQuery.setHours(timeToQuery.getHours()-24);
-
-  GoingActi.find({userId:userId,'yelp.id':yelpId})
-              .where('startedDate').gte(timeToQuery)
-              .remove()
-              .exec((err,success)=>{
-                res.json(success);
-              })
-              .catch((err)=>{
-                res.status(500).send(err);
-              });
+  GoingActi.findByIdAndRemove(actiId,(err,data)=>{
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(data);
+    }
+  })
 }
 
 function getGoingList(req,res){
@@ -47,6 +42,7 @@ function getGoingList(req,res){
 
   GoingActi.find({userId:userId})
             .where('startedDate').gte(timeToQuery)
+            .select('yelp')
             .exec((err,data)=>{
               if(err){
                 res.status(500).send(err);

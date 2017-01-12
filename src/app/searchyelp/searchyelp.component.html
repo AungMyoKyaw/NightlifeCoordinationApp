@@ -4,6 +4,11 @@
       <a href="http://127.0.0.1:4444/login/twitter" type="button" class="btn btn-primary center-block">Login with Twitter</a>
     </div>
   </div>
+  <div class="row" *ngIf="isAuth">
+    <div class="col-xs-12 login">
+      <a routerLink="/mygoinglist" type="button" class="btn btn-primary center-block">My Going List</a>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xs-12">
       <form action="http://127.0.0.1:4444/api/yelp">

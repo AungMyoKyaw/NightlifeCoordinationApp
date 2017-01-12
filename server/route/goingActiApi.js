@@ -9,7 +9,7 @@ router.route('/goingList')
 router.route('/add/:yelpID')
       .post(goingActiApi.addToGoingList);
 
-router.route('/delete/:yelpID')
+router.route('/delete/:actiId')
       .post(goingActiApi.removeFromGoingList);
 
 module.exports = router;
