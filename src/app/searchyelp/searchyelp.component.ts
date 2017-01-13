@@ -13,6 +13,8 @@ export class SearchyelpComponent implements OnInit {
   sVal: string = '';
   loading: boolean = false;
   isAuth: boolean = false;
+  yelpGoingId:any = [];
+  nowYelpGoingId:string = '';
 
   constructor(private searchyelpService:SearchyelpService) { }
 
@@ -23,6 +25,23 @@ export class SearchyelpComponent implements OnInit {
                 this.placeList = placelist.businesses;
                 this.loading = false;
               });
+  }
+
+  addtoGoingList(yelpId:string,yelpInfo){
+    this.nowYelpGoingId = yelpId;
+    this.searchyelpService.addtoGoingList(yelpId,yelpInfo)
+                          .subscribe(goinglist=>{
+                            this.yelpGoingId.push(Object.keys(goinglist)[0]);
+                            // console.log(goinglist);
+                            this.nowYelpGoingId = '';
+                          });
+  }
+
+  getGoingYelpId(){
+    this.searchyelpService.getGoingYelpId()
+                          .subscribe(idList=>{
+                            this.yelpGoingId = idList;
+                          })
   }
 
   onEnter(searchVal:string){
@@ -40,6 +59,9 @@ export class SearchyelpComponent implements OnInit {
     this.searchyelpService.checkIsAuth()
                           .subscribe(auth=>{
                             this.isAuth = auth.isAuth;
+                            if(this.isAuth){
+                              this.getGoingYelpId();
+                            }
                             console.log(this.isAuth,'is auth');
                           });
     if(this.recentSearch!==''){
