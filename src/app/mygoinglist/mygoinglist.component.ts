@@ -10,23 +10,31 @@ import { MygoinglistService } from '../mygoinglist.service';
 })
 export class MygoinglistComponent implements OnInit {
   goinglist:any = [];
+  loading:boolean = true;
+  deleting:boolean = false;
+  deletingId:string = '';
 
   constructor(private mygoinglistservice:MygoinglistService) { }
 
   getgoinglist(){
+    this.loading = true;
     this.mygoinglistservice.getmygoinglist()
                            .subscribe((result)=>{
                              this.goinglist = result;
-                             console.log(this.goinglist);
+                             this.loading = false;
                            });
   }
 
   deleteFromGoingList(actiId:string){
-    console.log(actiId);
+    // console.log(actiId);
+    this.deleting = true;
+    this.deletingId = actiId;
     this.mygoinglistservice.removefromgoinglist(actiId)
                            .subscribe((result)=>{
                              this.getgoinglist();
                            });
+   this.deleting = false;
+   this.deletingId = '';
   }
 
   ngOnInit() {

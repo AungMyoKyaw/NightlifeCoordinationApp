@@ -16,8 +16,8 @@ const goingSchema = new mongoose.Schema({
     id:{type:String,required:true},
     name:{type:String,required:true},
     url:{type:String,required:true},
-    image_url:{type:String,required:true},
-    snippet_text:{type:String,required:true},
+    image_url:{type:String},
+    snippet_text:{type:String},
     display_address:[{type:String,required:true}],
     phone:{type:String,required:true}
   }

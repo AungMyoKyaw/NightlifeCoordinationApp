@@ -7,3 +7,7 @@
 a{
   text-decoration: none;
 }
+.loading{
+  font-size: 2em;
+  font-weight: bold;
+}

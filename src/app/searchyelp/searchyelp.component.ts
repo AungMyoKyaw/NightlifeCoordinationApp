@@ -20,7 +20,7 @@ export class SearchyelpComponent implements OnInit {
 
   getSearchResult(){
     this.searchyelpService.yelpSearchResult(this.recentSearch)
-              .subscribe(placelist => {
+              .subscribe((placelist) => {
                 console.log(placelist);
                 this.placeList = placelist.businesses;
                 this.loading = false;
