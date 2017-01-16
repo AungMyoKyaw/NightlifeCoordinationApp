@@ -21,8 +21,14 @@ export class MygoinglistComponent implements OnInit {
     this.loading = true;
     this.mygoinglistservice.getmygoinglist()
                            .subscribe((result)=>{
-                             this.goinglist = result;
-                             this.loading = false;
+                             if(result.length){
+                              this.goinglist = result;
+                              this.loading = false;
+                             } else {
+                              this.loading = false;
+                              this.errorMessage = 'No Going List For This User';
+                              this.goinglist = [];
+                             }
                            },
                            (error)=>{
                              this.errorMessage = error;

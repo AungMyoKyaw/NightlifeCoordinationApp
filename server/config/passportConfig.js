@@ -1,10 +1,10 @@
 "use strict";
 
 const passport = require('passport');
-const Strategy = require('passport-twitter').Strategy;
+const twitterStrategy = require('passport-twitter').Strategy;
 const User = require('../model/user');
 
-passport.use(new Strategy({
+passport.use(new twitterStrategy({
 	consumerKey:'Hokpj8uNCwThKFtgkTiUp9Dko',
 	consumerSecret:'VJgiQsOQvZi7f7jafCcFR8d4dlYrsFxRDRQAZTwGqgtAI7PAtY',
 	callbackURL:'http://127.0.0.1:4444/twitter/callback'

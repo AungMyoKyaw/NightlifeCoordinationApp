@@ -80,7 +80,7 @@ export class SearchyelpComponent implements OnInit {
                             }
                             console.log(this.isAuth,'is auth');
                           });
-    if(this.recentSearch!==''){
+    if(this.recentSearch!==null){
       console.log(this.recentSearch,'searching now');
       this.loading = true;
       this.getSearchResult();
