@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
+const compression = require('compression');
 const glob = require('glob');
 const path = require('path');
 
@@ -43,6 +44,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({secret:'Aung Myo Kyaw',resave:true,saveUninitialized:true}));
+app.use(compression());
 
 //passport middleware
 app.use(passport.initialize());
