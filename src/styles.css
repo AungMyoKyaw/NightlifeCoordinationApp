@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-.large{
-  font-size: 2em;
+/*thank to http://stackoverflow.com/questions/356809/best-way-to-center-a-div-on-a-page-vertically-and-horizontally
+*/
+.loading{
+  position: fixed;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transform: -webkit-translate(-50%,-50%);
+  transform: -ms-translate(-50%,-50%);
+  font-size: 4em;
 }
