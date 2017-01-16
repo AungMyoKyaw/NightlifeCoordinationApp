@@ -11,7 +11,7 @@ const app = express();
 
 const config = require('./server/config/config');
 const dbUrl = config.db;
-const port = config.port;
+const port = config.port || 8080;
 
 //connecting to mongodb
 mongoose.connect(dbUrl);
@@ -59,7 +59,7 @@ app.get('/twitter/callback',
 );
 
 //launch angular
-app.use(express.static('./dist'));
+app.use(express.static(__dirname+'/dist'));
 
 //special Api
 const specialRoutes = glob.sync('./server/route/special/*.js');
