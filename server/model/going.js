@@ -19,7 +19,7 @@ const goingSchema = new mongoose.Schema({
     image_url:{type:String},
     snippet_text:{type:String},
     display_address:[{type:String,required:true}],
-    phone:{type:String,required:true}
+    phone:{type:String}
   }
 });
 

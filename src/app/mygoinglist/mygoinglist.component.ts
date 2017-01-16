@@ -13,6 +13,7 @@ export class MygoinglistComponent implements OnInit {
   loading:boolean = true;
   deleting:boolean = false;
   deletingId:string = '';
+  errorMessage:string = '';
 
   constructor(private mygoinglistservice:MygoinglistService) { }
 
@@ -21,6 +22,10 @@ export class MygoinglistComponent implements OnInit {
     this.mygoinglistservice.getmygoinglist()
                            .subscribe((result)=>{
                              this.goinglist = result;
+                             this.loading = false;
+                           },
+                           (error)=>{
+                             this.errorMessage = error;
                              this.loading = false;
                            });
   }
@@ -33,6 +38,10 @@ export class MygoinglistComponent implements OnInit {
                            .subscribe((result)=>{
                              this.getgoinglist();
                              this.deleting = false;
+                             this.deletingId = '';
+                           },
+                           (error)=>{
+                             this.errorMessage = error;
                              this.deletingId = '';
                            });
   }

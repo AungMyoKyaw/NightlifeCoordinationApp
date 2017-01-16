@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div *ngIf="loading" class="loading text-info">
+      <div *ngIf="loading" class="alert alert-info">
       loading .....
+      </div>
+      <div *ngIf="errorMessage!==''" class="alert alert-danger">
+        {{errorMessage}}
+      </div>
     </div>
     <div class="col-xs-12" *ngIf="!loading">
       <div *ngFor="let place of goinglist">

@@ -15,14 +15,22 @@ export class SearchyelpComponent implements OnInit {
   isAuth: boolean = false;
   yelpGoingId:any = [];
   nowYelpGoingId:string = '';
+  errorMessage:string = '';
 
   constructor(private searchyelpService:SearchyelpService) { }
 
   getSearchResult(){
+    this.loading = true;
+    this.errorMessage = '';
     this.searchyelpService.yelpSearchResult(this.recentSearch)
               .subscribe((placelist) => {
                 console.log(placelist);
                 this.placeList = placelist.businesses;
+                this.loading = false;
+                this.errorMessage = '';
+              },
+              (error)=>{
+                this.errorMessage = error;
                 this.loading = false;
               });
   }
@@ -32,7 +40,11 @@ export class SearchyelpComponent implements OnInit {
     this.searchyelpService.addtoGoingList(yelpId,yelpInfo)
                           .subscribe(goinglist=>{
                             this.yelpGoingId.push(Object.keys(goinglist)[0]);
-                            // console.log(goinglist);
+                            this.nowYelpGoingId = '';
+                            this.errorMessage = '';
+                          },
+                          error=>{
+                            this.errorMessage=error;
                             this.nowYelpGoingId = '';
                           });
   }
@@ -41,6 +53,10 @@ export class SearchyelpComponent implements OnInit {
     this.searchyelpService.getGoingYelpId()
                           .subscribe(idList=>{
                             this.yelpGoingId = idList;
+                            this.errorMessage = '';
+                          },
+                          (error)=>{
+                            this.errorMessage = error;
                           })
   }
 
