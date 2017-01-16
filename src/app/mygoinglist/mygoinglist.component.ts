@@ -32,9 +32,9 @@ export class MygoinglistComponent implements OnInit {
     this.mygoinglistservice.removefromgoinglist(actiId)
                            .subscribe((result)=>{
                              this.getgoinglist();
+                             this.deleting = false;
+                             this.deletingId = '';
                            });
-   this.deleting = false;
-   this.deletingId = '';
   }
 
   ngOnInit() {
